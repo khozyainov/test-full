@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 
 class BlogSerializer(serializers.ModelSerializer):
-    creator = serializers.ReadOnlyField(source='author.username')
+    author = serializers.ReadOnlyField(source='author.username')
 
     class Meta:
         model = Blog
