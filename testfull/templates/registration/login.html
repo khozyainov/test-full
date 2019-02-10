@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p>Simple auth page</p>
+    <div>
+    {% if form.errors %}
+        <p>Your username and password didn't match. Please try again.</p>
+    {% endif %}
+    </div>
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+
+        <div>
+            <td>{{ form.username.label_tag }}</td><br>
+            <td>{{ form.username }}</td>
+        </div>
+        <div>
+            <td>{{ form.password.label_tag }}</td><br>
+            <td>{{ form.password }}</td>
+        </div>
+        <br>
+        <div>
+            <input type="submit" value="login" />
+            <input type="hidden" name="next" value="{{ next }}" />
+        </div>
+    </form>
+
+{% endblock %}

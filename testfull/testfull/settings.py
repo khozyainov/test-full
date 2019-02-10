@@ -68,7 +68,7 @@ ROOT_URLCONF = 'testfull.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['./templates',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -127,6 +127,9 @@ USE_L10N = True
 
 USE_TZ = True
 
+SITE_ID = 1
+
+LOGIN_REDIRECT_URL = '/success'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/

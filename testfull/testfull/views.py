@@ -1,3 +1,6 @@
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views.decorators.debug import sensitive_post_parameters
 from rest_framework.response import Response
@@ -36,3 +39,8 @@ class RegisterView(CreateAPIView):
 
         complete_signup(self.request._request, user, None, None)
         return user
+
+
+@login_required
+def success(request):
+    return render(request, 'base.html', {})
