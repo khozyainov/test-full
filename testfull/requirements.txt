@@ -1,0 +1,8 @@
+Django==2.1.5
+django-allauth==0.38.0
+django-rest-auth==0.9.3
+djangorestframework==3.9.1
+gunicorn==19.9.0
+pytz==2018.9
+restview==2.9.1
+gevent==1.4.0
