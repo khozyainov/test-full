@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+    nginx:
+        restart: always
+        image: nginx:latest
+        expose:
+          - 8080
+        ports:
+          - "80:8080"
+        volumes:
+            - ./testfull/static:/srv/www/testfull/static
+            - ./testfull/media:/srv/www/testfull/media
+            - ./testfull/logs:/srv/www/testfull/logs
+            - ./docker/nginx:/etc/nginx/conf.d
+        depends_on:
+            - python
+    python:
+        restart: always
+        build:
+            context: .
+            dockerfile: docker/python/Dockerfile
+        volumes:
+            - ./testfull:/srv/www/testfull
+        expose:
+          - 8000
+        ports:
+            - 8000:8000
+        command: "gunicorn -c gunicorn.py testfull.wsgi"
